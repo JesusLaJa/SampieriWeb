@@ -1,0 +1,18 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="card">
+    <div class="card-content">
+        <div class="card-body card-dashboard">
+                <div id="divTablaArticulos"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        Articulo.init();
+    });
+</script>
+{% endblock %}

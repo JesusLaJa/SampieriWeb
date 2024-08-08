@@ -1,28 +1,42 @@
 {% load static %}
 
-<div class="table-responsive">
+<div class="table-responsive" id="divProveedoresTable">
     <h4>Proveedores</h4>
-    <table class="table zero-configuration" id="proveedoresTable">
+    <table class="table zero-configuration table-hover" id="proveedoresTable">
         <thead class="thead-dark">
             <tr>
+                <th>Clave</th>
                 <th>Nombre</th>
+                <th>RFC</th>
                 <th>Teléfono</th>
                 <th>Email</th>
                 <th>Dirección</th>
                 <th>Código Postal</th>
-                <th>Editar proveedor</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for proveedor in proveedores %}
             <tr>
-                <td class="text-bold-500 ">{{ proveedor.nombre }}</td>
+                <td class="text-bold-500">{{ proveedor.clave }}</td>
+                <td >{{ proveedor.nombre }}</td>
+                <td >{{ proveedor.rfc }}</td>
                 <td >{{ proveedor.telefono }}</td>
                 <td >{{ proveedor.email }}</td>
                 <td >{{ proveedor.direccion }}</td>
                 <td >{{ proveedor.codigoPostal }}</td>
+                <td >{{ proveedor.estatus }}</td>
                 <td class="text-center">
-                    <i id="btnUpdateProveedores" type="button" data-id="{{ proveedor.id }}" class="badge-circle badge-circle-light-secondary bx bx-edit-alt font-medium-1 btnUpdateProveedores"></i>
+                    <div class="btn-group mb-1">
+                        <div class="">
+                            <button id="btnUpdateProveedores" class="btn btn-icon btn-light rounded-circle mr-1 mb-1" aria-haspopup="true" type="button" data-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonIcon" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
+                                <a class="dropdown-item btnUpdateProveedores" data-id="{{ proveedor.id }}"><i class="bx bxs-edit-alt mr-50" ></i> Editar</a>
+                                <a class="dropdown-item btnMetasProveedores" data-href="/metas/metasView/" data-id="{{proveedor.id}}"><i class="bx bx-bar-chart-alt-2 mr-50"></i> Metas</a>
+                            </div>
+                        </div>
+                    </div>                    
                 </td>
             </tr>
             {% endfor %}

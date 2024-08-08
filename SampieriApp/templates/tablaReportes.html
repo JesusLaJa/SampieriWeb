@@ -1,0 +1,84 @@
+{% load static %}
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover" id="reportesTabla">
+        <thead class="thead-dark">
+            <tr>
+                <th>Clave Articulo</th>
+                <th>Descripcion</th>
+                <th>ID Sucursal</th>
+                <th>Nombre Sucursal</th>
+                <th>Existencia</th>
+            <!--<th>Clave Doc</th>
+                <th>Serie</th>
+                <th>Folio</th>
+                <th>Ticket</th>
+                <th>Fecha Doc</th>
+                <th>Dia</th>
+                <th>Mes</th>
+                <th>Año</th>
+                <th>Clave Art</th>
+                <th>Descripcion</th>
+                <th>Camplib9</th>
+                <th>Cantidad</th>
+                <th>Uni Emp</th>
+                <th>Cajas</th>
+                <th>CVE CLPV</th>
+                <th>Nombre</th>
+                <th>RFC</th>
+                <th>CVE ESQIMPU</th>
+                <th>Precio</th>
+                <th>IEPS</th>
+                <th>Total</th>
+                <th>Dia2</th>
+                <th>Mes2</th>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Camplib3</th>
+                <th>Canal</th>
+                <th>Tipo</th>
+                <th>ID Suc</th>
+                <th>Nombre</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            {% for reportes in reportesList %}
+            <tr>
+                <td class="text-bold-500">{{reportes.Articulo}}</td>
+                <td>{{reportes.Articulo.Descripcion1}}</td>
+                <td>{{reportes.Sucursal.Nombre}}</td>
+                <td>{{reportes.Sucursal.Direccion}}</td>
+                <td>{{reportes.Almacen.Existencia}}</td>
+                <!--<td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>
+                <td>{{reportes.}}</td>-->                
+                <!--<td><button id="btnUpdateMeta" class="btn btn-icon btn-light rounded-circle mr-1 mb-1 btnUpdateMetas" data-pr="{{metas.Proveedor.id}}" data-id="{{metas.id}}" aria-haspopup="true" type="button"><i class="bx bxs-pencil"></i></button></td>-->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

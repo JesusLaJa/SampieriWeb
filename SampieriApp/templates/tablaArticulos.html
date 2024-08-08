@@ -1,0 +1,83 @@
+{% load static %}
+
+<div class="table-responsive">
+    <h4>Articulos</h4>
+    <table class="table zero-configuration table-hover" id="articulosTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>CVE</th>
+                <th>CVE Alterna</th>
+                <th>Descripción</th>
+                <th>Pza x caja</th>
+                <th>Capacidad en ml</th>
+                <th>Costo</th>
+                <th>Precio de Venta</th>
+                <th>Fabricante</th>
+                <th>Linea</th>
+                <th>Listas de precio</th>
+                <th>Impuestos</th>
+                <th>Impuestos IEPS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for articulo in articulosList %}
+            <tr>
+                <td class="text-bold-500 text-center">{{ articulo.Articulo }}</td>
+                <td class="text-center">
+                    {% if articulo.CodigoAlterno == None %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.CodigoAlterno }}
+                    {% endif %}
+                </td>
+                <td class="text-center">{{ articulo.Descripcion1 }}</td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center">
+                    {% if articulo.CostoIdentificado == False %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.CostoIdentificado }}
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if articulo.PrecioVentaM2 == None %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.PrecioVentaM2 }}
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if articulo.Fabricante == None %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.Fabricante }}
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if articulo.Linea == None %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.Linea }}
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if articulo.PrecioLista == None %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.PrecioLista }}
+                    {% endif %}
+                </td>
+                <td class="text-center">{{ articulo.Impuesto1 }}</td>
+                <td class="text-center">
+                    {% if articulo.CFDIRetIEPSImpuesto == None %}
+                    Ninguno
+                    {% else %}
+                    {{ articulo.CFDIRetIEPSImpuesto }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

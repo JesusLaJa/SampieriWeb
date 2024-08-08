@@ -1,0 +1,47 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<section id="basic-tabs-components">
+    <div class="card">
+        <div class="card-header">
+            <h4 id="identificadorProveedor" data-idprov="{{prov.id}}" class="mr-1 mb-1">{{prov.nombre}}</h4>
+        </div>
+        <div class="card-content" id="divMetas">
+            <div class="card-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item current">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" aria-controls="home"
+                            role="tab" aria-selected="true">
+                            <span class="align-middle">Metas</span>
+                        </a>
+                    </li>
+                </ul>
+                <button id="nuevaMeta" class="btn btn-primary mr-1 mb-1" type="button" style="float: right;" data-href="/metas/createMetaView/" data-id="{{prov.id}}"><i class="bx 
+                    bx-file-blank"></i> Nueva meta</button>
+
+                <button id="cargarArchivo" class="btn btn-primary mr-1 mb-1" type="button" style="float: right;" data-href="/metas/createMetaView/" data-id="{{prov.id}}"><i class="bx 
+                    bx-file-blank"></i> Cargar archivo con metas</button> 
+
+                
+
+                <div class="tab-content" id="divFiltros">
+                    {% include "filtros/filtrosMetas.html" %}
+                    <div class="tab-pane active" id="divTablaMetas" aria-labelledby="home-tab" role="tabpanel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        Metas.init();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        Metas.initCreateMetaForm();
+    });
+</script>
+{% endblock %}

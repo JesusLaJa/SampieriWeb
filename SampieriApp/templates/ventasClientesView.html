@@ -1,0 +1,23 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="card">
+    <div class="card-header">
+        <h4>Ventas por Clientes</h4>
+        <p></p>
+        {% include "filtros/filtrosVentasClientes.html" %}
+    </div>
+    <div class="card-content">
+        <div class="card-body card-dashboard">
+            <div id="divTablaVentasClientes"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        VentasCliente.init();
+    });
+</script>
+{% endblock %}

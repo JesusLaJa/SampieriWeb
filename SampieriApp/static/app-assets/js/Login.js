@@ -1,6 +1,6 @@
 var Login = (function () {
 
-    var urlVista = Sampieri.obtenerUrl() + "signin/";
+    var urlLogin = Sampieri.obtenerUrl() + "signin/";
 
     function getCookie(name) {
         /*se asigna un valor nulo a la cookie */
@@ -80,7 +80,7 @@ var Login = (function () {
                 //Propiedades
                 type: 'POST',
                 //Obtiene la URL
-                url: urlVista,
+                url: urlLogin,
                 data: {
                     'username': username,
                     'password': password

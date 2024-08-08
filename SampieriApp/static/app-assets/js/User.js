@@ -1,6 +1,6 @@
 var User = (function () {
 
-    var urlVista = Sampieri.obtenerUrl() + "usuarios/";    
+    var urlUser = Sampieri.obtenerUrl() + "usuarios/";    
 
     function getCookie(name) {
         /*se asigna un valor nulo a la cookie */
@@ -48,7 +48,7 @@ var User = (function () {
             SimpleAjax.consumir({
             //Propiedades
                 type: 'POST',
-                url: urlVista + 'userUpdateView/',
+                url: urlUser + 'userUpdateView/',
                 data: {},
                 headers: { "X-CSRFToken": csrftoken },
             }).then(function (response) {
@@ -66,7 +66,7 @@ var User = (function () {
             SimpleAjax.consumir({
             //Propiedades
                 type: 'POST',
-                url: urlVista + 'updateUser/',
+                url: urlUser + 'updateUser/',
                 headers: { "X-CSRFToken": csrftoken },
                 data: {
                     'newName': newName,
@@ -86,7 +86,7 @@ var User = (function () {
             SimpleAjax.consumir({
             //Propiedades del objeto
                 type: 'POST',
-                url: urlVista + 'changePassword/',
+                url: urlUser + 'changePassword/',
                 headers: { "X-CSRFToken": csrftoken },
                 data: {
                     'newPassword': newPassword,
@@ -129,7 +129,7 @@ var User = (function () {
             //Realizar la llamada ajax para obtener el html de form
             return SimpleAjax.consumir({
                 type: 'POST',
-                url: urlVista + 'changePasswordUserView/',
+                url: urlUser + 'changePasswordUserView/',
                 headers: { "X-CSRFToken": csrftoken },
                 data: {},
             }).then(function (response) {

@@ -1,6 +1,6 @@
 var Menu = (function () {
 
-    var urlVista = Sampieri.obtenerUrl() + "menu/";
+    var urlMenu = Sampieri.obtenerUrl() + "menu/";
 
     function getCookie(name) {
         /*se asigna un valor nulo a la cookie */
@@ -29,9 +29,9 @@ var Menu = (function () {
             //Funcion para llamar el modal el Reporte 1
             $('#idReport1').click(function () {
                 Modal.alert.success("Este es el Reporte 1");
-                $('.swal2-confirm').click(function () {
+                /*$('.swal2-confirm').click(function () {
                     Menu.tableTestView();
-                })
+                });*/
                 //Menu.tableTestView();
                 //Aqui ira el nombre de la funcion que llamara la tabla y la pintara en el contenido
                 //$('#idContentBody').html(response);
@@ -59,7 +59,7 @@ var Menu = (function () {
             SimpleAjax.consumir({
                 //Propiedades
                 type: 'POST',
-                url: urlVista + 'tableView/',
+                url: urlMenu + 'tableView/',
                 data: {},
                 headers: { "X-CSRFToken": csrftoken },
             }).then(function (response) {

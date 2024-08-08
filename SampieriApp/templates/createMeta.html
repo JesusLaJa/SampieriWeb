@@ -1,0 +1,102 @@
+{% load static %}
+
+<section class="input-validation">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Nueva meta</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{formMetas.Articulo.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Articulo}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{formMetas.Canal.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Canal}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{formMetas.FechaFin.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.FechaFin}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-id-floating">{{formMetas.Promos.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Promos}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-floating">{{formMetas.Inversion.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Inversion}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-floating">{{formMetas.Descuento.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Descuento}}
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{formMetas.Proveedor.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Proveedor}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{formMetas.FechaInicio.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.FechaInicio}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="floating">{{formMetas.Apoyo.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Apoyo}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-info-floating">{{formMetas.Cajas.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Cajas}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-floating">{{formMetas.PromoPrecio.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.PromoPrecio}}
+                                    </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-floating">{{formMetas.Caja9Litros.label}}</label>
+                                    <fieldset class="form-label-group">
+                                        {{formMetas.Caja9Litros}}
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="btnCreateMeta" type="submit" class="btn btn-primary">Crear meta</button>
+                        <button id="btnVolver" type="submit" class="btn btn-primary" data-href="/metas/metasView/" data-id="{{provId.id}}">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        Metas.initCreateMetaForm();
+    });
+</script>

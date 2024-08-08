@@ -1,0 +1,27 @@
+{% load static %}
+<div>
+    <button id="btnCreateCanal" class="btn btn-primary" type="button" style="float: right;"><i class="bx 
+        bx-file-blank"></i> Nuevo</button>
+</div>
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover mb-0" id="canalesTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Canales</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for canal in canales %}
+            <tr>
+                <td>{{canal.Nombre}}</td>
+                <td>
+                    <button id="btnEditCanales" class="btn btn-icon btn-light rounded-circle mr-1 mb-1 btnEditCanal"
+                        data-idcanal="{{canal.id}}" aria-haspopup="true" type="button" data-toggle="dropdown" aria-expanded="false"><i class="bx bxs-pencil"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

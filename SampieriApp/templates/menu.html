@@ -36,7 +36,7 @@
                                 <div class="user-nav d-sm-flex d-none"><span
                                         class="user-name">{{usuarioLog}}</span><span
                                         class="user-status text-muted"></span></div><span><img class="round"
-                                        src="{% static 'app-assets/images/portrait/small/avatar-s-11.jpg' %}"
+                                        src="{% static 'app-assets/images/portrait/small/avatar-s-27.jpg' %}"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right pb-0"><a class="dropdown-item"
@@ -71,15 +71,15 @@
                 {% if sampieri %}
                 <li class=" navigation-header"><span>Apps</span>
                 </li>
-                <li class=" nav-item"><a href="#"><span class="bx bxs-notepad menu-title">  Historial</span></a>
+                <li class=" nav-item"><a href="#"><i class="bx bxs-notepad"></i><span class="menu-title">Historial</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><span class="bx bxs-report menu-title">  Reportes</span></a>
+                <li class=" nav-item"><a href="#"><i class="bx bxs-report"></i><span class="menu-title">Reportes</span></a>
                     <ul class="menu-content">
-                        <li><a id="idReport1" href="#"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
+                        <li><a id="idReport1" href="/reportes/reportesView/"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item">Reporte 1</span></a>
                         </li>
-                        <li><a id="idReport2" href="#"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
-                                    class="menu-item">Reporte 2</span></a>
+                        <li><a id="idReport2" href="/ventasCliente/ventasClientesView/"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
+                                    class="menu-item">Ventas por cliente</span></a>
                         </li>
                         <li><a id="idReport3" href="#"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item">Reporte 3</span></a>
@@ -91,22 +91,26 @@
                 </li>
                 <li class=" navigation-header"><span>Proveedores</span>
                 </li>
-                <li class=" nav-item"><a id="idListado" href="/proveedor/proveedoresListView/"><span class="bx bxs-box menu-title" data-i18n="Content">  Listado</span></a>
+                <li class=" nav-item"><a id="idListado" href="/proveedor/proveedoresView/"><i class="bx bxs-box"></i><span class="menu-title" data-i18n="Content">Listado</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><span class="bx bx-box menu-title" data-i18n="Colors">  Articulos</span></a>
+                <li class=" nav-item"><a id="idArticulos" href="/articulo/articulosView/"><i class="bx bx-box"></i><span class="menu-title" data-i18n="Colors">Articulos</span></a>
                 </li>
+                <li class=" navigation-header"><span>CONFIGURACIONES</span></li>
+                <li class=" nav-item"><a id="idCanalVentas" href="/canales/canalesView/"><i class="bx bx-store"></i><span class="menu-title" data-i18n="Content">Canales de Venta</span></a>
+                </li>
+
                 {% elif proveedor %}
                 <li class=" navigation-header"><span>Apps</span>
                 </li>
-                <li class=" nav-item"><a href="#"><span class="bx bxs-box menu-title" data-i18n="Email">Historial</span></a>
+                <li class=" nav-item"><a href="#"><i class="bx bxs-box"></i><span class="menu-title" data-i18n="Email">Historial</span></a>
                 </li>
-                <li class=" nav-item"><a href=""><span class="bx bx-box menu-title" data-i18n="Chat">  Reportes</span></a>
+                <li class=" nav-item"><a href=""><i class="bx bx-box"></i><span class="menu-title" data-i18n="Chat">  Reportes</span></a>
                     <ul class="menu-content">
                         <li><a id="idReport1" href="#"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item">Reporte 1</span></a>
                         </li>
-                        <li><a id="idReport2" href="#"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
-                                    class="menu-item">Reporte 2</span></a>
+                        <li><a id="idReport2" href="/menu/ventasClienteView/"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
+                                    class="menu-item">Ventas por cliente</span></a>
                         </li>
                         <li><a id="idReport3" href="#"><i id="icon-arrow" class="bx bx-right-arrow-alt"></i><span
                                     class="menu-item">Reporte 3</span></a>
@@ -217,6 +221,11 @@
     <!-- END: Footer-->
      
 </body>
+<script>
+    $(document).ready(function () {
+        Articulo.init();
+    });
+</script>
 <script>
     $(document).ready(function () {
         Proveedor.init();

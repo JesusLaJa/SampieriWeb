@@ -1,0 +1,23 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="row" id="table-head">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mr-1 mb-1">Canales</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body card-dashboard" id="divTablaCanales"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        Canales.init();
+    });
+</script>
+{% endblock %}

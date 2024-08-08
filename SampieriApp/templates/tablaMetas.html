@@ -1,0 +1,39 @@
+{% load static %}
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover" id="metasTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Productos</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Apoyo</th>
+                <th>Promos</th>
+                <th>Cajas</th>
+                <th>Inversion</th>
+                <th>Promo Precio</th>
+                <th>% Descuento</th>
+                <th>Caja de 9 litros</th>
+                <th>Canal</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for metas in metasList %}
+            <tr>
+                <td class="text-bold-500">{{metas.Articulo.Articulo}}</td>
+                <td>{{metas.FechaInicio}}</td>
+                <td>{{metas.FechaFin}}</td>
+                <td>{{metas.Apoyo}}</td>
+                <td>{{metas.Promos}}</td>
+                <td>{{metas.Cajas}}</td>
+                <td>{{metas.Inversion}}</td>
+                <td>{{metas.PromoPrecio}}</td>
+                <td>{{metas.Descuento}}</td>
+                <th>{{metas.Caja9Litros}}</th>
+                <td>{{metas.Canal.Nombre}}</td>
+                <td><button id="btnUpdateMeta" class="btn btn-icon btn-light rounded-circle mr-1 mb-1 btnUpdateMetas" data-pr="{{metas.Proveedor.id}}" data-id="{{metas.id}}" aria-haspopup="true" type="button"><i class="bx bxs-pencil"></i></button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,86 @@
+{% load static %}
+
+<div class="table-responsive">
+    <table class="table zero-configuration table-borderless table-hover table-striped" id="clientesVentasTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Detalle</th>
+                <th>Cliente</th>
+                <th>Articulo</th>
+                <th>Empresa</th>
+                <th>Moneda</th>
+                <th>Cap.Ml.</th>
+                <th>IEPS</th>
+                <th>Total x Caja</th>
+                <th>Total x Botella</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for filtro in listVentasClientesFiltrada %}
+            <tr data-idventa="{{filtro.id}}">
+                <td>
+                    <span class="ver-detalle" data-toggle="tooltip" data-placement="top" title="Ver detalle">
+                        <i class="bx bxs-right-arrow"></i>
+                    </span>
+                </td>
+                <td class="text-bold-500">{{filtro.IDVentaD.Cliente}}</td>
+                <td class="text-bold-500">{{filtro.Articulo}}</td>
+                <td class="text-bold-500">{{filtro.IDVentaD.Empresa}}</td>
+                <td>{{filtro.IDVentaD.Moneda}}</td>
+                <td>{{filtro.IDVentaD.Cliente}}</td>
+                <td>{{filtro.IDVentaD.Almacen}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="filaDetalle{{filtro.id}}" style="display:none;">
+                <td colspan="10">
+                    <div class="table-responsive">
+                        <table id="tablaDetalles" cellspacing="0" cellpadding="0" role="grid"
+                            class="display nowrap table table-hover table-striped table-bordered"
+                            style="text-align: center;">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <td class="text-bold-500">Cantidad</td>
+                                    <td class="text-bold-500">Almacen</td>
+                                    <td class="text-bold-500">Unidad</td>
+                                    <td class="text-bold-500">Sucursal</td>
+                                    <td class="text-bold-500">Anexo</td>
+                                    <td class="text-bold-500">Comprobante</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">{{filtro.Cantidad}}</td>
+                                    <td class="text-center">{{filtro.Almacen}}</td>
+                                    <td class="text-center">{{filtro.Unidad}}</td>
+                                    <td class="text-center">
+                                        {% if filtro.Sucursal == 0 %}
+                                        Ninguna
+                                        {% else %}
+                                        {{filtro.Sucursal}}
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if filtro.Anexo == False %}
+                                        Ninguno
+                                        {% else %}
+                                        {{filtro.Anexo}}
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if filtro.Comprobante == False %}
+                                        Ninguno
+                                        {% else %}
+                                        {{filtro.Comprobante}}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

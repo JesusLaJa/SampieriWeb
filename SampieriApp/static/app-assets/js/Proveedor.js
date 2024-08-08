@@ -1,6 +1,6 @@
 var Proveedor = (function () {
 
-    var urlVista = Sampieri.obtenerUrl() + "proveedor/";
+    var urlProveedor = Sampieri.obtenerUrl() + "proveedor/";
 
     function getCookie(name) {
         /*se asigna un valor nulo a la cookie */
@@ -24,86 +24,89 @@ var Proveedor = (function () {
 
     const csrftoken = getCookie('csrftoken');
 
+    function iniciarTabla() {
+        //se asigna el id de la tabla a una variable
+        $("#proveedoresTable").DataTable({
+            pageLength: 25,
+            responsive: true,
+            searching: true,
+            language: {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copyTitle": 'Copiar al portapapeles',
+                    "copySuccess": {
+                        "_": '%d filas copiadas',
+                        "1": '1 fila copiada'
+                    },
+                    "pageLength": {
+                        "_": "Mostrar %d filas",
+                        "-1": "Mostrar Todo"
+                    }
+                }
+            }
+        });
+    }
+
     return {
         init: function () {
-            Proveedor.listProveedoresView();
+            Proveedor.ProveedoresView();
         },
         //FUNCION PARA MOSTRAR EL LISTADO DE PROVEEDORES
-        listProveedoresView: function () {
+        ProveedoresView: function () {
             SimpleAjax.consumir({
                 //Propiedades
                 type: 'POST',
-                url: urlVista + 'proveedoresTablaView/',
+                url: urlProveedor + 'proveedoresTablaView/',
                 data: {},
                 headers: { "X-CSRFToken": csrftoken },
             }).then(function (response) {
                 //Se indica donde se pintara el html(la tabla) que devuelva
                 $("#divTablaProveedores").html(response);
+                iniciarTabla();
 
                 //Se asigna una fiuncion cuando se le de click a los elementos html que tengan la clase btnUpdateProveedores
                 $('.btnUpdateProveedores').click(function () {
+                    let idProveedor = $(this).data('id');
+                    Proveedor.mostrarModalUpdateProveedor(idProveedor)
+                });
+                $('.btnMetasProveedores').click(function () {
                     //Se obtiene el valor del data-id del elemento al que se le dio click
+                    //idProveedor = $(this).data('id');
                     idProveedor = $(this).data('id');
-                    //Se llama la funcion que muestra el modal para actualizar el proveedor y se le pasa un parametro(el id)
-                    Proveedor.showModalUpdateProveedor(idProveedor);
+                    href = $(this).data('href') + idProveedor;
+                    window.location.href = href;
                 });
                 //Se da formato a la tabla
-                $("#proveedoresTable").DataTable({
-                    pageLength: 25,
-                    responsive: true,
-                    searching: false,
-                    language: {
-                        "sProcessing": "Procesando...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sZeroRecords": "No se encontraron resultados",
-                        "sEmptyTable": "Ningún dato disponible en esta tabla",
-                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                        "sInfoPostFix": "",
-                        "sSearch": "Buscar:",
-                        "sUrl": "",
-                        "sInfoThousands": ",",
-                        "sLoadingRecords": "Cargando...",
-                        "oPaginate": {
-                            "sFirst": "Primero",
-                            "sLast": "Último",
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
-                        },
-                        "oAria": {
-                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                        },
-                        "buttons": {
-                            "copyTitle": 'Copiar al portapapeles',
-                            "copySuccess": {
-                                "_": '%d filas copiadas',
-                                "1": '1 fila copiada'
-                            },
-                            "pageLength": {
-                                "_": "Mostrar %d filas",
-                                "-1": "Mostrar Todo"
-                            }
-                        }
-                    }
-                });
             });
         },
-        //FUNCION PARA MOSTRAR EL MODAL DE ACTUALIZAR PROVEEDOR
-        showModalUpdateProveedor: function (idProveedor) {
-            //Se usa el metodo para crear modal y se asigna a una variable
+        mostrarModalUpdateProveedor: function (idProveedor) {
             var modal = Modal.create({
-                //id del form que se mostrara dentro del modal
                 id: 'formUpdateProveedor',
-                //Titulo del modal
                 title: 'Proveedor'
             });
-            //Se llama al metodo/funcionn que obtiene el formulario para actualizar
             Proveedor.getFormUpdateProveedor(
-                //Encuentra el cuerpo del modal
                 modal.find('.modal-body'),
-                //se pasan los parametros requeridos por la funcion
                 idProveedor
             ).then(function () {
                 modal.modal('show').on('shown.bs.modal', function () {
@@ -123,7 +126,7 @@ var Proveedor = (function () {
             //Realizar la llamada ajax para obtener el html de form
             return SimpleAjax.consumir({
                 type: 'POST',
-                url: urlVista + 'proveedorUpdateView/',
+                url: urlProveedor + 'proveedorUpdateView/',
                 headers: { "X-CSRFToken": csrftoken },
                 data: {
                     'idProveedor': idProveedor
@@ -133,29 +136,35 @@ var Proveedor = (function () {
                 //Se asigna una funcion al boton con id okModal cuando se le de click
                 $('#okModal').click(function () {
                     //Se obtienen los valores ingresados por el usuario y se asignan a las variables
+                    newClave = $('#id_clave').val();
                     newNombre = $('#id_nombre').val();
+                    newRFC = $('#id_rfc').val();
                     newTelefono = $('#id_telefono').val();
                     newEmail = $('#id_email').val();
                     newDireccion = $('#id_direccion').val();
                     newCodigoPostal = $('#id_codigoPostal').val();
+                    newEstatus = $('#id_estatus').val();
                     //Se llama a la funcion que actualiza los proveedores y se pasan los parametros que necesita
-                    Proveedor.updateProveedores(idProveedor, newNombre, newTelefono, newEmail, newDireccion, newCodigoPostal)
+                    Proveedor.updateProveedores(idProveedor, newClave, newNombre, newRFC, newTelefono, newEmail, newDireccion, newCodigoPostal, newEstatus)
                 });
             });
         },
         //FUNCION PARA ACTUALIZAR PROVEEDORES
-        updateProveedores: function (idProveedor, newNombre, newTelefono, newEmail, newDireccion, newCodigoPostal) {
+        updateProveedores: function (idProveedor, newClave, newNombre, newRFC, newTelefono, newEmail, newDireccion, newCodigoPostal, newEstatus) {
             SimpleAjax.consumir({
                 //Propiedades
                 type: 'POST',
-                url: urlVista + 'updateProveedor/',
+                url: urlProveedor + 'updateProveedor/',
                 data: {
                     'idProveedor': idProveedor,
+                    'newClave': newClave,
                     'newNombre': newNombre,
+                    'newRFC': newRFC,
                     'newTelefono': newTelefono,
                     'newEmail': newEmail,
                     'newDireccion': newDireccion,
-                    'newCodigoPostal': newCodigoPostal
+                    'newCodigoPostal': newCodigoPostal,
+                    'newEstatus': newEstatus,
                 },
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
