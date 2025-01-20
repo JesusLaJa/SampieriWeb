@@ -1,0 +1,29 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'app-assets/css/plugins/file-uploaders/dropzone.css' %}">
+
+<section>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <p class="card-text">Este formulario solo acepta archivos con extensión .txt generador por la MACRO de Sampieri</p>
+                        <form action="{% url 'uploadTxt' %}" class="dropzone dropzone-area" id="dpz-single-file">
+                            {% csrf_token %}
+                            <div class="dz-message">Agregue su archivo con metas</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="{% static 'app-assets/vendors/js/extensions/dropzone.min.js' %}"></script>
+<script src="{% static 'app-assets/vendors/js/ui/prism.min.js' %}"></script>
+{% endblock %}

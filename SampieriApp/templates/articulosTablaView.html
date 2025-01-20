@@ -1,0 +1,34 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="content-header row">
+    <div class="content-header-left col-12 mb-2 mt-1">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h5 class="content-header-title float-left pr-1 mb-0">Articulos</h5>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb p-0 mb-0">
+                        <li class="breadcrumb-item"><a><i class="bx bx-home"></i></a></li>
+                        <li class="breadcrumb-item"><a>Proveedores</a></li>
+                        <li class="breadcrumb-item"><a href="/articulo/articulosView/">Articulos</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-content">
+        <div class="card-body card-dashboard">
+                <div id="divTablaArticulos"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        Articulo.init();
+    });
+</script>
+{% endblock %}

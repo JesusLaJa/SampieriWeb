@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover" id="reportesTabla">
+        <thead class="thead-dark">
+            <tr>
+                <th>Clave Articulo</th>
+                <th>Descripcion</th>
+                <th>Fabricante</th>
+                <th>Articulo Unidad 2</th>
+                <th>Unidad</th>
+                <th>Factor</th>
+                <th>Existencia</th>
+                <th>Almacen</th>
+                <th>Clave Empresa</th>
+                <th>Nombre Empresa</th>
+                <th>Cajas</th>
+                <th>Botellas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in resultado %}
+                <tr>
+                    <td>{{ registro.0 }}</td>
+                    <td>{{ registro.1 }}</td>
+                    <td>{{ registro.2 }}</td>
+                    <td>{{ registro.3 }}</td>
+                    <td>{{ registro.4 }}</td>
+                    <td>{{ registro.5 }}</td>
+                    <td>{{ registro.6 }}</td>
+                    <td>{{ registro.7 }}</td>
+                    <td>{{ registro.8 }}</td>
+                    <td>{{ registro.9 }}</td>
+                    <td>{{ registro.10 }}</td>
+                    <td>{{ registro.11 }}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,261 @@
+{% load static %}
+
+<section class="input-validation">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Actualizar venta</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="selectEmpresa">{{formVentaTCalc.Empresa.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Empresa}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectSucursalOrigen">Sucursal Origen</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectSucursalOrigen" name="selectSucursalOrigen">
+                                            <option value="{{instanciaVentaTCalc.SucursalOrigen}}">{{instanciaVentaTCalc.SucursalOrigen}}</option>
+                                        </select>
+                                        <span id="btnClearSelectSucursalOrigen" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectConcepto">Concepto</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectConcepto" name="selectConcepto">
+                                            <option value="{{instanciaVentaTCalc.Concepto}}">{{instanciaVentaTCalc.Concepto}}</option>
+                                        </select>
+                                        <span id="btnClearSelectAlmacen" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectEstatus">Estatus</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectEstatus" name="selectEstatus">
+                                            <option value="{{instanciaVentaTCalc.Estatus}}">{{instanciaVentaTCalc.Estatus}}</option>
+                                        </select>
+                                        <span id="btnClearSelectEstatus" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectSucursalA">Sucursal enviar a</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectSucursalA" name="selectSucursalA">
+                                            <option value="{{instanciaVentaTCalc.SusursalEnviarA}}">{{instanciaVentaTCalc.SusursalEnviarA}}</option>
+                                        </select>
+                                        <span id="btnClearSelectEstatus" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectCondicion">{{formVentaTCalc.Condicion.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Condicion}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectCausa">{{formVentaTCalc.Causa.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Causa}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectRenglon">Renglon</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectRenglon" name="selectRenglon">
+                                            <option value="{{instanciaVentaTCalc.Renglon}}">{{instanciaVentaTCalc.Renglon}}</option>
+                                        </select>
+                                        <span id="btnClearSelectRenglon" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectProducto">Articulo</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectProducto" name="selectProducto">
+                                            <option value="{{instanciaVentaTCalc.Articulo}}">{{instanciaVentaTCalc.Articulo}}</option>
+                                        </select>
+                                        <span id="btnClearSelectProducto" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputMililitro">{{formVentaTCalc.Mililitro.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Mililitro}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectPaisOrigen">Pais origen</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectPaisOrigen" name="selectPaisOrigen">
+                                            <option value="{{instanciaVentaTCalc.PaisOrigen}}">{{instanciaVentaTCalc.PaisOrigen}}</option>
+                                        </select>
+                                        <span id="btnClearSelectPaisOrigen" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPrecio">{{formVentaTCalc.Precio.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Precio}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSubtotal">{{formVentaTCalc.SubTotal.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.SubTotal}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="selectSucursal">Sucursal</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectSucursal" name="selectSucursal">
+                                            <option value="{{instanciaVentaTCalc.Sucursal}}">{{instanciaVentaTCalc.Sucursal}}</option>
+                                        </select>
+                                        <span id="btnClearSelectSucursal" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectMovID">MovID</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectMovID" name="selectMovID">
+                                            <option value="{{instanciaVentaTCalc.MovID}}">{{instanciaVentaTCalc.MovID}}</option>
+                                        </select>
+                                        <span id="btnClearSelectMovID" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectReferencia">Referencia</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectReferencia" name="selectReferencia">
+                                            <option value="{{instanciaVentaTCalc.Referencia}}">{{instanciaVentaTCalc.Referencia}}</option>
+                                        </select>
+                                        <span id="btnClearSelectReferencia" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectClientes">Cliente</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectClientes" name="selectClientes">
+                                            <option value="{{instanciaVentaTCalc.Cliente}}">{{instanciaVentaTCalc.Cliente}}</option>
+                                        </select>
+                                        <span id="btnClearSelectClientes" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectAgente">Agente</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectAgente" name="selectAgente">
+                                            <option value="{{instanciaVentaTCalc.Agente}}">{{instanciaVentaTCalc.Agente}}</option>
+                                        </select>
+                                        <span id="btnClearSelectAgente" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectUsuario">Usuario</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectUsuario" name="selectUsuario">
+                                            <option value="{{instanciaVentaTCalc.Usuario}}">{{instanciaVentaTCalc.Usuario}}</option>
+                                        </select>
+                                        <span id="btnClearSelectUsuario" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectListaPrecios">{{formVentaTCalc.ListaPreciosEsp.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.ListaPreciosEsp}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectAlmacen">Almacen</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectAlmacen" name="selectAlmacen">
+                                            <option value="{{instanciaVentaTCalc.Almacen}}">{{instanciaVentaTCalc.Almacen}}</option>
+                                        </select>
+                                        <span id="btnClearSelectAlmacen" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputClasificacionIEPS">{{formVentaTCalc.ClasificacionIEPS.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.ClasificacionIEPS}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectProvInventario">Prov Inventario</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectProvInventario" name="selectProvInventario">
+                                            <option value="{{instanciaVentaTCalc.ProvInventario}}">{{instanciaVentaTCalc.ProvInventario}}</option>
+                                        </select>
+                                        <span id="btnClearSelectProvInventario" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectUnidad">{{formVentaTCalc.Unidad.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Unidad}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputCantidad">{{formVentaTCalc.Cantidad.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Cantidad}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputImpuesto">{{formVentaTCalc.Impuesto1Total.label}}</label>
+                                    <div class="input-group mb-3">
+                                        {{formVentaTCalc.Impuesto1Total}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="btnUpdateVenta" data-id="{{instanciaVentaTCalc.ID}}" type="submit" class="btn btn-primary">Actualizar venta</button>
+                        <button id="btnVolver" type="submit" class="btn btn-primary" data-href="/reportes/ajustarInventarioView/">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        Reportes.initAjustarInventario();
+    });
+</script>

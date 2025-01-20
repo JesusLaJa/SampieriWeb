@@ -1,0 +1,69 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<section id="basic-tabs-components">
+    <div class="card-content">
+        <div class="content-header row">
+            <div class="content-header-left col-12 mb-2 mt-1">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h5 class="content-header-title float-left pr-1 mb-0">Listado</h5>
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb p-0 mb-0">
+                                <li class="breadcrumb-item"><a><i class="bx bx-home"></i></a></li>
+                                <li class="breadcrumb-item"><a>Proveedores</a></li>
+                                <li class="breadcrumb-item"><a href="/proveedor/proveedoresView/">Listado</a></li>
+                                <li class="breadcrumb-item"><a href="/metas/metasView/{{prov.Clave}}">Metas</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content" id="divMetas">
+            <div class="card-header">
+                <a type="button" style="float: right;" ><span id="btnVolverProveedores" data-href="/proveedor/proveedoresView/"><i class="bx bx-x-circle"></i></span></a>
+            </div>
+            <div class="card-header">
+                <h4 id="identificadorProveedor" data-idprov="{{prov.Clave}}" class="mr-1 mb-1">{{prov.Nombre}}</h4>
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item current">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" aria-controls="home"
+                            role="tab" aria-selected="true">
+                            <span class="align-middle">Metas</span>
+                        </a>
+                    </li>
+                </ul>
+                <button id="nuevaMeta" class="btn btn-primary mr-1 mb-1" type="button" style="float: right;" data-href="/metas/createMetaView/" data-id="{{prov.Clave}}"><i class="bx 
+                    bx-file-blank"></i> Nueva meta</button>
+
+                <button id="cargarArchivo" class="btn btn-primary mr-1 mb-1" type="button" style="float: right;" data-href="/metas/createMetaView/" data-id="{{prov.Clave}}"><i class="bx 
+                    bx-file-blank"></i> Cargar archivo con metas</button> 
+
+                
+
+                <div class="tab-content" id="divFiltros">
+                    {% include "filtros/filtrosMetas.html" %}
+                    <div class="tab-pane active" id="divTablaMetas" aria-labelledby="home-tab" role="tabpanel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        Metas.init();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        Metas.initCreateMetaForm();
+    });
+</script>
+{% endblock %}

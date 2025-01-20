@@ -1,0 +1,122 @@
+{% load static %}
+
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover" id="reporteDesplazamientoTabla">
+        <thead class="thead-dark">
+            <tr>
+                <th>CVE_DOC</th>
+                <th>Serie</th>
+                <th>Folio</th>
+                <th>FECHA_DOC</th>
+                <th>Dia</th>
+                <th>Mes</th>
+                <th>Año</th>
+                <th>CVE_ART</th>
+                <th>Descripcion</th>
+                <th>CAMPLIB9</th>
+                <th>Cantidad</th>
+                <th>UNI_EMP</th>
+                <th>Cajas</th>
+                <th>CVE_CLPV</th>
+                <th>Nombre</th>
+                <th>RFC</th>
+                <th>CVE_ESQIMPU</th>
+                <th>Precio</th>
+                <th>IEPS</th>
+                <th>IVA</th>
+                <th>Total</th>
+                <th>Dia2</th>
+                <th>Mes2</th>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Camplib3</th>
+                <th>Canal</th>
+                <th>Tipo</th>
+                <th>ID Suc</th>
+                <th>Nom Suc</th>
+                <th>Estatus</th>
+                <th>Almacen</th>
+                <th>Mov</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in spResultado %}
+            <tr>
+                <td>{{ registro.0 }}</td>
+                <td>{% if registro.1 is None or registro.1 == '' %}
+                        No hay serie
+                    {% else %}
+                        {{ registro.1 }}
+                    {% endif %}
+                </td>
+                <td>{{ registro.2 }}</td>
+                <td>{{ registro.3|date:"d/m/Y" }}</td>
+                <td>{{ registro.4 }}</td>
+                <td>{{ registro.5 }}</td>
+                <td>{{ registro.6 }}</td>
+                <td>{{ registro.7 }}</td>
+                <td>{{ registro.8 }}</td>
+                <td>{{ registro.9 }}</td>
+                <td>{{ registro.10 }}</td>
+                <td>{{ registro.11 }}</td>
+                <td>{{ registro.12 }}</td>
+                <td>{{ registro.13 }}</td>
+                <td>{{ registro.14 }}</td>
+                <td>{{ registro.15 }}</td>
+                <td>
+                    {% if registro.16 is None%}
+                        No hay impuesto
+                    {% else %}
+                        {{ registro.16 }}
+                    {% endif %}
+                </td>
+                <td>{{ registro.18 }}</td>
+                <td>
+                    {% if registro.19 is None%}
+                        No hay IEPS
+                    {% else %}
+                        {{ registro.19 }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if registro.20 is None%}
+                        No hay IVA
+                    {% else %}
+                        {{ registro.20 }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if registro.21 is None%}
+                        No hay Total
+                    {% else %}
+                        {{ registro.21 }}
+                    {% endif %}
+                </td>
+                <td>{{ registro.22 }}</td>
+                <td>{{ registro.23 }}</td>
+                <td>{{ registro.24|date:"d/m/Y" }}</td>
+                <td>
+                    {% if registro.25 is None or registro.24 == '' %}
+                        No hay usuario
+                    {% else %}
+                        {{ registro.25 }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if registro.26 is None or registro.26 == '' %}
+                        No hay categoria
+                    {% else %}
+                        {{ registro.26 }}
+                    {% endif %}</td>
+                <td>{{ registro.27 }}</td>
+                <td>{{ registro.28 }}</td>
+                <td>{{ registro.29 }}</td>
+                <td>{{ registro.30 }}</td>
+                <td>{{ registro.31 }}</td>
+                <td>{{ registro.32 }}</td>
+                <td>{{ registro.33 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

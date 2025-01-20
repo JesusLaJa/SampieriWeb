@@ -1,0 +1,107 @@
+<div class="row" id="divFiltrosReporteDesplazamiento">
+    <div class="col-lg-2">
+        <label for="rangoFecha">Fecha</label>
+        <input type="text" id="rangoFecha" name="rangoFecha" class="form-control">
+    </div>
+    <div class="col-lg-2">
+        <label for="selectFabricante">Fabricante</label>
+        <div class="input-group mb-3">
+            <select class="form-control" id="selectFabricante" name="selectFabricante">
+                <option value="0">Seleccione...</option>
+            </select>
+            <span id="btnClearFabricante" class="input-group-text">
+                <a href="#" class="bx bx-x-circle"></a>
+            </span>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <label for="selectEstatus">Estatus</label>
+        <div class="input-group mb-3">
+            <select class="form-control" id="selectEstatus" name="selectEstatus">
+                <option value="0">Seleccione...</option>
+            </select>
+            <span id="btnClearEstatus" class="input-group-text">
+                <a href="#" class="bx bx-x-circle"></a>
+            </span>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <label for="selectAlmacen">Almacen</label>
+        <div class="input-group mb-3">
+            <select class="form-control" id="selectAlmacen" name="selectAlmacen">
+                <option value="0">Seleccione...</option>
+                <option value="(TRANSITO)">(TRANSITO)</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="08">08</option>
+                <option value="1">1</option>
+                <option value="15">15</option>
+                <option value="2">2</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="3">3</option>
+                <option value="ACTIVOFIJO">ACTIVOFIJO</option>
+            </select>
+            <span id="btnClearAlmacen" class="input-group-text">
+                <a href="#" class="bx bx-x-circle"></a>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label for=""></label>
+        <div class="input-group mb-3">
+            <span id="btnBuscarReporteDesplazamiento" class="btn btn-primary"><i class="bx bx-search"></i></span>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('exportButton').addEventListener('click', function () {
+        var table = document.getElementById('reporteDesplazamientoTabla');
+        var columnas_seleccionadas = [];
+        var rows = [];
+
+        // Obtener encabezados de la tabla
+        var ths = table.querySelectorAll('thead th');
+        for (var i = 0; i < ths.length; i++) {
+            columnas_seleccionadas.push(ths[i].innerText);
+        }
+
+        // Obtener filas de la tabla
+        var trs = table.querySelectorAll('tbody tr');
+        for (var i = 0; i < trs.length; i++) {
+            var cells = trs[i].querySelectorAll('td');
+            var row = [];
+            for (var j = 0; j < cells.length; j++) {
+                row.push(cells[j].innerText);
+            }
+            rows.push(row);
+        }
+
+        // Crear un objeto con las columnas y los datos para enviar al servidor
+        var datos = {
+            columnas_seleccionadas: columnas_seleccionadas,
+            rows: rows
+        };
+
+        // Enviar datos al servidor
+        fetch('{% url "exportReporteDesplazamientoExcel" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(datos)
+        })
+            .then(response => response.blob())
+            .then(blob => {
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'Reporte De Desplazamiento.xlsx';
+                link.click();
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>

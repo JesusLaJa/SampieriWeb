@@ -1,0 +1,95 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="content-header row">
+    <div class="content-header-left col-12 mb-2 mt-1">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h5 class="content-header-title float-left pr-1 mb-0">Reporte de Existencias</h5>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb p-0 mb-0">
+                        <li class="breadcrumb-item"><a><i class="bx bx-home"></i></a></li>
+                        <li class="breadcrumb-item"><a>Reportes</a></li>
+                        <li class="breadcrumb-item"><a href="/reportes/reporteExistenciasView/">Reporte de Existencias</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h4>Reporte de Existencias</h4>
+        <p></p>
+    </div>
+    <div class="card-content">
+        <div class="card-body card-dashboard">
+            
+            <button id="exportButton" style="float: right;" class="btn btn-success "><i class="bx bxs-file"></i> </button>
+
+            <div class="tab-content" id="divFiltros">
+                {% include "filtros/filtrosReporteExistencias.html" %}
+                <div id="divTablaReportes">
+                    <h1>Cargando...</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('exportButton').addEventListener('click', function () {
+        var table = document.getElementById('reportesTabla');
+        var columnas_seleccionadas = [];
+        var rows = [];
+
+        // Obtener encabezados de la tabla
+        var ths = table.querySelectorAll('thead th');
+        for (var i = 0; i < ths.length; i++) {
+            columnas_seleccionadas.push(ths[i].innerText);
+        }
+
+        // Obtener filas de la tabla
+        var trs = table.querySelectorAll('tbody tr');
+        for (var i = 0; i < trs.length; i++) {
+            var cells = trs[i].querySelectorAll('td');
+            var row = [];
+            for (var j = 0; j < cells.length; j++) {
+                row.push(cells[j].innerText);
+            }
+            rows.push(row);
+        }
+
+        // Crear un objeto con las columnas y los datos para enviar al servidor
+        var datos = {
+            columnas_seleccionadas: columnas_seleccionadas,
+            rows: rows
+        };
+
+        // Enviar datos al servidor
+        fetch('{% url "exportReporteExistenciasExcel" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(datos)
+        })
+            .then(response => response.blob())
+            .then(blob => {
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'Reporte De Existencias.xlsx';
+                link.click();
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        Reportes.initExistencias();
+    });
+</script>
+{% endblock %}

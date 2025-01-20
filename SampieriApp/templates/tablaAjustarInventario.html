@@ -1,0 +1,439 @@
+{% load static %}
+
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover" id="ajustarInventarioTabla">
+        <thead class="thead-dark">
+            <tr>
+                <th>Productos</th>
+                <th>Proveedor</th>
+                <th>Canal</th>
+                <th>Sucursal</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Subtotal</th>
+                <th>IEPS</th>
+                <th>IVA</th>
+                <th>Precio Final</th>
+                <th>Botella</th>
+                <th>Cantidad Neta</th>
+                <th>Desplazamiento</th>
+                <th>Meta</th>
+                <th>Diferencia</th>
+                <th>Maquillaje</th>
+                <th>Desp Ajustado</th>
+                <th>Existencia</th>
+                <th>Existencia Maquillada</th>
+                <th>Maquillar</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reportes in resultadoSP %}
+            <tr>
+                <!--Articulo-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.0}} - {{reportes.SP.1}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.0}} - {{reportes.SP.1}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.0}} - {{reportes.SP.1}}</td>
+                {% endif %}
+
+                <!--Proveedor-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{ reportes.SP.2 }} - {{ reportes.SP.3 }}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{ reportes.SP.2 }} - {{ reportes.SP.3 }}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{ reportes.SP.2 }} - {{ reportes.SP.3 }}</td>
+                {% endif %}
+
+                <!--Canal-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{ reportes.SP.4 }}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{ reportes.SP.4 }}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{ reportes.SP.4 }}</td>
+                {% endif %}
+
+                <!--Sucursal-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    {% if reportes.SP.5 == 0 %}
+                    Diaz Miron
+                    {% elif reportes.SP.5 == 2 %}
+                    Palmas
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    {% if reportes.SP.5 == 0 %}
+                    Diaz Miron
+                    {% elif reportes.SP.5 == 2 %}
+                    Palmas
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    {% if reportes.SP.5 == 0 %}
+                    Diaz Miron
+                    {% elif reportes.SP.5 == 2 %}
+                    Palmas
+                    {% endif %}
+                </td>
+                {% endif %}
+
+                <!--Fecha Inicio-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{ reportes.SP.6|date:"d/m/Y" }}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{ reportes.SP.6|date:"d/m/Y" }}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{ reportes.SP.6|date:"d/m/Y" }}</td>
+                {% endif %}
+
+                <!--Fecha Fin-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{ reportes.SP.7|date:"d/m/Y" }}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{ reportes.SP.7|date:"d/m/Y" }}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{ reportes.SP.7|date:"d/m/Y" }}</td>
+                {% endif %}
+
+                <!--Subtotal-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.8}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.8}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.8}}</td>
+                {% endif %}
+
+                <!--IEPS-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.9}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.9}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.9}}</td>
+                {% endif %}
+
+                <!--IVA-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.10}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.10}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.10}}</td>
+                {% endif %}
+
+                <!--PrecioFinal-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    <input id="inputPrecio" type="text" class="inputMaquillaje inputPrecio form-control"
+                        value="{{reportes.SP.11}}" data-id="{{reportes.SP.23}}" data-valor-anterior="{{reportes.SP.11}}"
+                        disabled>
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    <input id="inputPrecio" type="text" class="inputMaquillaje inputPrecio form-control" 
+                        value="{{reportes.SP.11}}" data-id="{{reportes.SP.23}}" data-valor-anterior="{{reportes.SP.11}}"
+                        disabled>
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    <input id="inputPrecio" type="text" class="inputMaquillaje inputPrecio form-control"
+                        value="{{reportes.SP.11}}" data-id="{{reportes.SP.23}}" data-valor-anterior="{{reportes.SP.11}}"
+                        disabled>
+                </td>
+                {% endif %}
+
+                <!--BOTELLAS-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.12}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.12}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.12}}</td>
+                {% endif %}
+
+                <!--CANTIDAD NETA DUDAS-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.13}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.13}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.13}}</td>
+                {% endif %}
+
+                <!--DESPLAZAMIENTO-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.15}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.15}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.15}}</td>
+                {% endif %}
+
+                <!--META-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.16}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.16}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.16}}</td>
+                {% endif %}
+
+                <!--DIFERENCIA-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.17}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.17}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.17}}</td>
+                {% endif %}
+
+                <!--MAQUILLAJE-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    {% if reportes.SP.Metas.Maquillaje > reportes.SP.Metas.Existencia %}
+                    No hay existencia
+                    {% else %}
+                    <input id="inputMaquillaje" type="number" class="inputMaquillaje form-control"
+                        value="{{reportes.SP.18}}" data-id="{{reportes.SP.23}}" data-valor-anterior-maquillaje="{{reportes.SP.18}}" disabled>
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    {% if reportes.SP.Metas.Maquillaje > reportes.SP.Metas.Existencia %}
+                    No hay existencia
+                    {% else %}
+                    <input id="inputMaquillaje" type="number" class="inputMaquillaje form-control"
+                        value="{{reportes.SP.18}}" data-id="{{reportes.SP.23}}" data-valor-anterior-maquillaje="{{reportes.SP.18}}" disabled>
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    {% if reportes.SP.Metas.Maquillaje > reportes.SP.Metas.Existencia %}
+                    No hay existencia
+                    {% else %}
+                    <input id="inputMaquillaje" type="number" class="inputMaquillaje form-control"
+                        value="{{reportes.SP.18}}" data-id="{{reportes.SP.23}}" data-valor-anterior-maquillaje="{{reportes.SP.18}}" disabled>
+                    {% endif %}
+                </td>
+                {% endif %}
+
+                <!--DESP AJUSTADO-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    {% if reportes.DesplazamientoAjustado > reportes.SP.19 %}
+                    No hay existencias
+                    {% else %}
+                    {{reportes.DesplazamientoAjustado}}
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    {% if reportes.DesplazamientoAjustado > reportes.SP.19 %}
+                    No hay existencias
+                    {% else %}
+                    {{reportes.DesplazamientoAjustado}}
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    {% if reportes.DesplazamientoAjustado > reportes.SP.19 %}
+                    No hay existencias
+                    {% else %}
+                    {{reportes.DesplazamientoAjustado}}
+                    {% endif %}
+                </td>
+                {% endif %}
+
+                <!--EXISTENCIA-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">{{reportes.SP.19}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">{{reportes.SP.19}}</td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>{{reportes.SP.19}}</td>
+                {% endif %}
+
+                <!--EXISTENCIA MAQUILLADA-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    {% if reportes.DesplazamientoAjustado > reportes.SP.19 %}
+                    No hay existencias
+                    {% else %}
+                    {{reportes.ExistenciaMaquillada}}
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    {% if reportes.DesplazamientoAjustado > reportes.SP.19 %}
+                    No hay existencias
+                    {% else %}
+                    {{reportes.ExistenciaMaquillada}}
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    {% if reportes.DesplazamientoAjustado > reportes.SP.19 %}
+                    No hay existencias
+                    {% else %}
+                    {{reportes.ExistenciaMaquillada}}
+                    {% endif %}
+                </td>
+                {% endif %}
+
+                <!-- FALTA OBTENER EL ID DE LA META,CATALOGOAJUSTE,EMPRESA,ALMACEN,MONEDA,INVMAQUILLADO(LO OBTENGO YO)-->
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    {% if reportes.SP.24 == 3 %}
+                    Bloqueado
+                    {% else %}
+                    <button class="btn btn-icon btn-primary rounded-circle mr-1 mb-1 btnEditAjustarInventario"
+                        data-metaid="{{reportes.SP.23}}" data-catalogoajuste="{{reportes.SP.24}}"
+                        data-art="{{reportes.SP.0}}" data-empresa="{{reportes.SP.22}}"
+                        data-almacen="{{reportes.SP.25}}" data-moneda="{{reportes.SP.21}}"
+                        data-existencia="{{reportes.SP.19}}" data-despajustado="{{reportes.DesplazamientoAjustado}}"
+                        data-desplazamiento="{{reportes.SP.15}}" data-maquillaje="{{reportes.SP.18}}"
+                        data-invmaquillado="{{reportes.ExistenciaMaquillada}}" type="button">
+                        <i class="bx bxs-pencil"></i>
+                    </button>
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    {% if reportes.SP.24 == 3 %}
+                    Bloqueado
+                    {% else %}
+                    <button class="btn btn-icon btn-primary rounded-circle mr-1 mb-1 btnEditAjustarInventario"
+                        data-metaid="{{reportes.SP.23}}" data-catalogoajuste="{{reportes.SP.24}}"
+                        data-art="{{reportes.SP.0}}" data-empresa="{{reportes.SP.22}}"
+                        data-existencia="{{reportes.SP.19}}" data-despajustado="{{reportes.DesplazamientoAjustado}}"
+                        data-almacen="{{reportes.SP.25}}" data-moneda="{{reportes.SP.21}}"
+                        data-desplazamiento="{{reportes.SP.15}}" data-maquillaje="{{reportes.SP.18}}"
+                        data-invmaquillado="{{reportes.ExistenciaMaquillada}}" type="button">
+                        <i class="bx bxs-pencil"></i>
+                    </button>
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    {% if reportes.SP.24 == 3 %}
+                    Bloqueado
+                    {% else %}
+                    <button class="btn btn-icon btn-primary rounded-circle mr-1 mb-1 btnEditAjustarInventario"
+                        data-metaid="{{reportes.SP.23}}" data-catalogoajuste="{{reportes.SP.24}}"
+                        data-art="{{reportes.SP.0}}" data-empresa="{{reportes.SP.22}}"
+                        data-almacen="{{reportes.SP.25}}" data-moneda="{{reportes.SP.21}}"
+                        data-existencia="{{reportes.SP.19}}" data-despajustado="{{reportes.DesplazamientoAjustado}}"
+                        data-desplazamiento="{{reportes.SP.15}}" data-maquillaje="{{reportes.SP.18}}"
+                        data-invmaquillado="{{reportes.ExistenciaMaquillada}}" type="button">
+                        <i class="bx bxs-pencil"></i>
+                    </button>
+                    {% endif %}
+                </td>
+                {% endif %}
+                
+                {% if reportes.SP.24 == 1 %}
+                <td class="table-warning" data-original-class="table-warning">
+                    {% if reportes.SP.24 == 3 %}
+                    Bloqueado
+                    {% else %}
+                    <div class="btn-group mb-1">
+                        <div class="">
+                            <button id="btnAccionesAjustarInventario" class="btn btn-icon btn-primary rounded-circle mr-1 mb-1" aria-haspopup="true" type="button" data-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonIcon" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
+                                <a class="dropdown-item btnUpdateAjustarInventario" data-idventatcalc="{{reportes.SP.26}}"><i class="bx bxs-edit-alt mr-50" ></i> Editar</a>
+                                <a class="dropdown-item btnIgnorarAjustarInventario" data-idventatcalc="{{reportes.SP.26}}" ><i class="bx bx-hide mr-50"></i> Ignorar</a>
+                            </div>
+                        </div>
+                    </div> 
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 2 %}
+                <td class="table-success" data-original-class="table-success">
+                    {% if reportes.SP.24 == 3 %}
+                    Bloqueado
+                    {% else %}
+                    <div class="btn-group mb-1">
+                        <div class="">
+                            <button id="btnAccionesAjustarInventario" class="btn btn-icon btn-primary rounded-circle mr-1 mb-1" aria-haspopup="true" type="button" data-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonIcon" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
+                                <a class="dropdown-item btnUpdateAjustarInventario" data-idventatcalc="{{reportes.SP.26}}"><i class="bx bxs-edit-alt mr-50" ></i> Editar</a>
+                                <a class="dropdown-item btnIgnorarAjustarInventario" data-idventatcalc="{{reportes.SP.26}}" ><i class="bx bx-hide mr-50"></i> Ignorar</a>
+                            </div>
+                        </div>
+                    </div> 
+                    {% endif %}
+                </td>
+                {% endif %}
+                {% if reportes.SP.24 == 3 %}
+                <td>
+                    {% if reportes.SP.24 == 3 %}
+                    Bloqueado
+                    {% else %}
+                    <div class="btn-group mb-1">
+                        <div class="">
+                            <button id="btnAccionesAjustarInventario" class="btn btn-icon btn-primary rounded-circle mr-1 mb-1" aria-haspopup="true" type="button" data-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonIcon" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
+                                <a class="dropdown-item btnUpdateAjustarInventario" data-idventatcalc="{{reportes.SP.26}}"><i class="bx bxs-edit-alt mr-50" ></i> Editar</a>
+                                <a class="dropdown-item btnIgnorarAjustarInventario" data-idventatcalc="{{reportes.SP.26}}" ><i class="bx bx-hide mr-50"></i> Ignorar</a>
+                            </div>
+                        </div>
+                    </div> 
+                    {% endif %}
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

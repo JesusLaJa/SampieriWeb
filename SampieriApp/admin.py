@@ -1,0 +1,22 @@
+from django.contrib import admin
+from .models import Prov, proveedoresUsuarios, Art, ArtUnidad, ArtExistenciaNeta, Venta, VentaD, Canal, Metas, Cte, Empresa, EmpresaGrupo, Mov, Sucursal, VentaTCalc, CompraTCalc, Alm, Estatus, Fabricante
+
+admin.site.register(Prov)
+admin.site.register(proveedoresUsuarios)
+admin.site.register(Art)
+admin.site.register(ArtUnidad)
+admin.site.register(Venta)
+admin.site.register(VentaD)
+admin.site.register(Canal)
+admin.site.register(Metas)
+admin.site.register(ArtExistenciaNeta)
+admin.site.register(Cte)
+admin.site.register(Empresa)
+admin.site.register(EmpresaGrupo)
+admin.site.register(Mov)
+admin.site.register(Sucursal)
+admin.site.register(VentaTCalc)
+admin.site.register(CompraTCalc)
+admin.site.register(Alm)
+admin.site.register(Estatus)
+admin.site.register(Fabricante)

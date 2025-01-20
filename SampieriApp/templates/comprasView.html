@@ -1,0 +1,45 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="content-header row">
+    <div class="content-header-left col-12 mb-2 mt-1">
+        <div class="row breadcrumbs-top">
+            
+            <div class="col-12">
+                <h5 class="content-header-title float-left pr-1 mb-0">Compras</h5>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb p-0 mb-0">
+                        <li class="breadcrumb-item"><a><i class="bx bx-home"></i></a></li>
+                        <li class="breadcrumb-item"><a>Configuraciones</a></li>
+                        <li class="breadcrumb-item"><a href="/compras/comprasView/">Compras</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content" id="divCompra">
+        <div class="card-body card-dashboard">
+            <button id="btnAgregarCompra" style="float: right; color: white; border: none; padding: 10px 20px; margin-right: 10px;"
+            class="btn btn-success">Agregar compra</button>
+            <h4 class="mr-1 mb-1">Compras</h4>
+            <div class="card-content" id="divCompras">
+                {% include "filtros/filtrosCompras.html" %}
+                <div class="card-body card-dashboard" id="divTablaCompras">
+                    <h1>Cargando...</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        Compras.initCompras();
+    });
+</script>
+{% endblock %}

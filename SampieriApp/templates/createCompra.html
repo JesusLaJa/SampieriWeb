@@ -1,0 +1,147 @@
+{% load static %}
+
+<section class="input-validation">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Nueva compra</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="selectEmpresa">Empresa</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectEmpresa" name="selectEmpresa">
+                                            <option value="">Seleccione...</option>
+                                            <option value="HSS">HSS</option>
+                                            <option value="B-ZAM">B-ZAM</option>
+                                        </select>
+                                        <span id="btnClearSelectEmpresa" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectMovID">MovID</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectMovID" name="selectMovID">
+                                            <option value="">Seleccione...</option>
+                                        </select>
+                                        <span id="btnClearSelectMovID" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectProveedor">Proveedor</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectProveedor" name="selectProveedor">
+                                            <option value="">Seleccione...</option>
+                                        </select>
+                                        <span id="btnClearSelectProveedor" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputRenglon">Renglon</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="inputRenglon" placeholder="Renglon">
+                                        <span id="btnClearInputRenglon" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputCosto">Costo</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="inputCosto" placeholder="Costo">
+                                        <span id="btnClearCosto" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectProducto">Articulo</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectProducto" name="selectProducto">
+                                            <option value="">Seleccione...</option>
+                                        </select>
+                                        <span id="btnClearSelectProducto" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="selectSucursal">Sucursal</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectSucursal" name="selectSucursal">
+                                            <option value="">Seleccione...</option>
+                                        </select>
+                                        <span id="btnClearSelectSucursal" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>    
+                                <div class="form-group">
+                                    <label for="selectEstatus">Estatus</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectEstatus" name="selectEstatus">
+                                            <option value="">Seleccione...</option>
+                                        </select>
+                                        <span id="btnClearSelectEstatus" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>                            
+                                <div class="form-group">
+                                    <label for="inputObservaciones">Observaciones</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="inputObservaciones" placeholder="Observaciones">
+                                        <span id="btnClearObservaciones" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectUnidad">Unidad</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectUnidad" name="selectUnidad">
+                                            <option value="">Seleccione...</option>
+                                            <option value="PIEZA">PIEZA</option>
+                                            <option value="Caja">Caja</option>
+                                        </select>
+                                        <span id="btnClearSelectUnidad" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputCantidad">Cantidad</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" id="inputCantidad" placeholder="Cantidad">
+                                        <span id="btnClearInputCantidad" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="btnCreateCompra" type="submit" class="btn btn-primary">Crear compra</button>
+                        <button id="btnVolver" type="submit" class="btn btn-primary" data-href="/compras/comprasView/">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        Compras.initCompras();
+    });
+</script>

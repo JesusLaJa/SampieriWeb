@@ -1,0 +1,115 @@
+{% extends 'baseTablas.html' %}
+
+{% load static %}
+
+{% block content2 %}
+<div class="content-header row">
+    <div class="content-header-left col-12 mb-2 mt-1">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h5 class="content-header-title float-left pr-1 mb-0">Ajustar Inventario</h5>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb p-0 mb-0">
+                        <li class="breadcrumb-item"><a><i class="bx bx-home"></i></a></li>
+                        <li class="breadcrumb-item"><a>Proveedores</a></li>
+                        <li class="breadcrumb-item"><a href="/reportes/ajustarInventarioView/">Ajustar Inventarios</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content" id="divAjustarInventario">
+        <div class="card-body card-dashboard">                    
+            <button id="exportButton" style="float: right; margin-left: 10px;" class="btn btn-success "><i
+                class="bx bxs-file"></i>
+            </button>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle mr-1"
+                        style="float: right; color: white; border: none; padding: 10px 20px;" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Opciones
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a id="btnGuardarCambios" class="dropdown-item" href="#">Guardar cambios</a>
+                        <a id="btnConfirmarCambios" class="dropdown-item" href="#">Confirmar cambios</a>
+                    </div>
+                </div>
+
+            <button id="btnAgregarVenta" style="float: right; color: white; border: none; padding: 10px 20px; margin-right: 10px;"
+            class="btn btn-success">Agregar venta</button>
+
+            <div class="tab-content" id="divFiltros">
+                {% include "filtros/filtrosAjustarInventario.html" %}
+                <div id="divTablaAjustarInventario">
+                    <h1>Cargando...</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('exportButton').addEventListener('click', function () {
+        var table = document.getElementById('ajustarInventarioTabla');
+        var columnas_seleccionadas = [];
+        var rows = [];
+
+        // Obtener encabezados de la tabla
+        var ths = table.querySelectorAll('thead th');
+        for (var i = 0; i < ths.length; i++) {
+            columnas_seleccionadas.push(ths[i].innerText);
+        }
+
+        // Obtener filas de la tabla
+        var trs = table.querySelectorAll('tbody tr');
+        for (var i = 0; i < trs.length; i++) {
+            var cells = trs[i].querySelectorAll('td');
+            var row = [];
+            for (var j = 0; j < cells.length; j++) {
+                var input = cells[j].querySelector('input');
+                if (input) {
+                    // Si hay un input, tomar su valor
+                    row.push(input.value);
+                } else {
+                    // Si no hay input, tomar el texto de la celda
+                    row.push(cells[j].innerText);
+                }
+            }
+            rows.push(row);
+        }
+
+        // Crear un objeto con las columnas y los datos para enviar al servidor
+        var datos = {
+            columnas_seleccionadas: columnas_seleccionadas,
+            rows: rows
+        };
+
+        // Enviar datos al servidor
+        fetch('{% url "exportAjusteInventariosExcel" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(datos)
+        })
+            .then(response => response.blob())
+            .then(blob => {
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'Ajuste de inventario.xlsx';
+                link.click();
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        Reportes.initAjustarInventario();
+    });
+</script>
+{% endblock %}

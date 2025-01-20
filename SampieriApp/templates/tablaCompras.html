@@ -1,0 +1,50 @@
+{% load static %}
+
+<div class="table-responsive">
+    <table class="table zero-configuration table-hover" id="comprasTabla">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mov ID</th>
+                <th>Fecha Emision</th>
+                <th>Estatus</th>
+                <th>Unidad</th>
+                <th>Costo</th>
+                <th>Cantidad neta</th>
+                <th>Articulo</th>
+                <th>Empresa</th>
+                <th>Proveedor</th>
+                <th>Sucursal</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in spResultado %}
+            <tr>
+                <td>{{ registro.0 }}</td>
+                <td>{{ registro.1|date:"d/m/Y" }}</td>
+                <td>{{ registro.2 }}</td>
+                <td>{{ registro.3 }}</td>
+                <td>{{ registro.4 }}</td>
+                <td>{{ registro.5 }}</td>
+                <td>{{ registro.6 }}</td>
+                <td>{{ registro.7 }}</td>
+                <td>{{ registro.8 }}</td>
+                <td>{{ registro.9 }}</td>
+                <td>
+                    <button id="btnEditarCompras" class="btn btn-icon btn-primary rounded-circle mr-1 mb-1 btnEditarCompras"
+                        data-id="{{registro.10}}" aria-haspopup="true" type="button" data-toggle="dropdown"
+                        aria-expanded="false"><i class="bx bxs-pencil"></i>
+                    </button>
+                </td>
+                <td>
+                    <button id="borrarCompra" class="btn btn-icon btn-danger rounded-circle mr-1 mb-1 borrarCompra"
+                        data-id="{{registro.10}}" aria-haspopup="true" type="button" data-toggle="dropdown"
+                        aria-expanded="false"><i class="bx bx-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

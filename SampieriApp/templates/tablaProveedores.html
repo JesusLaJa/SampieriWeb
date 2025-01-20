@@ -1,0 +1,45 @@
+{% load static %}
+
+<div class="table-responsive" id="divProveedoresTable">
+    <h4>Proveedores</h4>
+    <table class="table zero-configuration table-hover" id="proveedoresTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Clave</th>
+                <th>Nombre</th>
+                <th>RFC</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Código Postal</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedores %}
+            <tr>
+                <td class="text-bold-500">{{ proveedor.Clave }}</td>
+                <td >{{ proveedor.Nombre }}</td>
+                <td >{{ proveedor.RFC }}</td>
+                <td >{{ proveedor.Telefono }}</td>
+                <td >{{ proveedor.Email }}</td>
+                <td >{{ proveedor.Direccion }}</td>
+                <td >{{ proveedor.CodigoPostal }}</td>
+                <td >{{ proveedor.Estatus }}</td>
+                <td class="text-center">
+                    <div class="btn-group mb-1">
+                        <div class="">
+                            <button id="btnUpdateProveedores" class="btn btn-icon btn-primary rounded-circle mr-1 mb-1" aria-haspopup="true" type="button" data-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonIcon" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
+                                <a class="dropdown-item btnUpdateProveedores" data-id="{{ proveedor.Clave }}"><i class="bx bxs-edit-alt mr-50" ></i> Editar</a>
+                                <a class="dropdown-item btnMetasProveedores" data-href="/metas/metasView/" data-id="{{proveedor.Clave}}"><i class="bx bx-bar-chart-alt-2 mr-50"></i> Metas</a>
+                            </div>
+                        </div>
+                    </div>                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

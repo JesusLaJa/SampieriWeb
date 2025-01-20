@@ -1,0 +1,85 @@
+{% load static %}
+
+<section class="input-validation">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Actualizar compra</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Empresa.label}}</label>
+                                    {{formCompraTCalc.Empresa}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.MovID.label}}</label>
+                                    {{formCompraTCalc.MovID}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Proveedor.label}}</label>
+                                    {{formCompraTCalc.Proveedor}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Renglon.label}}</label>
+                                    {{formCompraTCalc.Renglon}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectUnidad">Unidad</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="selectUnidad" name="selectUnidad">
+                                            <option value="">Seleccione...</option>
+                                            <option value="PIEZA">PIEZA</option>
+                                            <option value="Caja">Caja</option>
+                                        </select>
+                                        <span id="btnClearSelectUnidad" class="input-group-text">
+                                            <a href="#" class="bx bx-x-circle"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.CantidadNeta.label}}</label>
+                                    {{formCompraTCalc.CantidadNeta}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Sucursal.label}}</label>
+                                    {{formCompraTCalc.Sucursal}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Estatus.label}}</label>
+                                    {{formCompraTCalc.Estatus}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Observaciones.label}}</label>
+                                    {{formCompraTCalc.Observaciones}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Articulo.label}}</label>
+                                    {{formCompraTCalc.Articulo}}
+                                </div>
+                                <div class="col-12">
+                                    <label for="selectEmpresa">{{formCompraTCalc.Costo.label}}</label>
+                                    {{formCompraTCalc.Costo}}
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <button id="btnActualizarCompra" type="submit" class="btn btn-primary">Crear compra</button>
+                        <button id="btnVolver" type="submit" class="btn btn-primary"
+                            data-href="/compras/comprasView/">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        Compras.initCompras();
+    });
+</script>
